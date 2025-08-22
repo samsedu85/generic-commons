@@ -33,6 +33,10 @@ public class GenericController<T, S extends IGenericService<T>> {
 	@Autowired
 	protected S service;
 
+	/**
+	 * Devuelve una lista de todos los empleados
+	 * @return
+	 */
 	@Operation(summary = "Returns the list of all registered employees")
 	@ApiResponses(value = {
 			@ApiResponse(responseCode = "200", description = "Successful get list elements"),
@@ -43,6 +47,11 @@ public class GenericController<T, S extends IGenericService<T>> {
 		return ResponseEntity.ok().body(service.findAll());
 	}
 
+	/**
+	 * Busca a empleado por medio de su ID
+	 * @param id
+	 * @return
+	 */
 	@Operation(summary = "Retrieves an employee's details by their ID")
 	@ApiResponses(value = {
 			@ApiResponse(responseCode = "200", description = "Successful by ID"),
@@ -54,6 +63,10 @@ public class GenericController<T, S extends IGenericService<T>> {
 		return ResponseEntity.ok(service.findById(id));
 	}
 
+	/**
+	 * @param listDto
+	 * @return Guarda uno o mas empleados
+	 */
 	@Operation(summary = "Allows you to insert one or more employees in the same request")
 	@ApiResponses(value = {
 			@ApiResponse(responseCode = "201", description = "Successful created"),
@@ -66,6 +79,11 @@ public class GenericController<T, S extends IGenericService<T>> {
 	}
 
 	
+	/**
+	 * Elimina empleado por medio de su ID
+	 * @param id
+	 * @return
+	 */
 	@Operation(summary = "Delete an employee by their ID")
 	@ApiResponses(value = {
 			@ApiResponse(responseCode = "204", description = "Successful delete by ID"),

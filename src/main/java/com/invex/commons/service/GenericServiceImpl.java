@@ -30,6 +30,9 @@ public class GenericServiceImpl<E, T, R extends JpaRepository<E, Long>> implemen
 	@Autowired
 	protected R repository;
 
+	/**
+	 * Devuelve una lista de objetos
+	 */
 	@Override
 	@Transactional(readOnly = true)
 	public List<T> findAll() {
@@ -44,6 +47,9 @@ public class GenericServiceImpl<E, T, R extends JpaRepository<E, Long>> implemen
 		return listDTO;
 	}
 
+	/**
+	 * Devuelve un objeto de acuerdo al ID
+	 */
 	@Override
 	@Transactional(readOnly = true)
 	public T findById(Long id) {
@@ -55,6 +61,10 @@ public class GenericServiceImpl<E, T, R extends JpaRepository<E, Long>> implemen
 		return objectDTO;
 	}
 
+	/**
+	 * Guarda uno o mas elementos
+	 *
+	 */
 	@Override
 	public List<T> save(List<T> dto) {
 		List<T> createListEmployee = new ArrayList<T>();
@@ -72,6 +82,9 @@ public class GenericServiceImpl<E, T, R extends JpaRepository<E, Long>> implemen
 		return createListEmployee;
 	}
 
+	/**
+	 * Elimina un elemento por ID
+	 */
 	@Override
 	public void deleteById(Long id) {
 		try {
